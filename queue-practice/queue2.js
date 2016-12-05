@@ -15,14 +15,22 @@ Queue.prototype.dequeue = function() {
   Array.prototype.shift.apply(this, arguments);
 };
 
+// Playing with apply to utilize the length function on the Array object.
+Queue.prototype.length = function() {
+  Array.prototype.length.apply(this, arguments);
+};
+
 let testQueue = new Queue();
 
 testQueue.enqueue('A');
 console.log(testQueue);
+console.log(testQueue.length);
 testQueue.enqueue('B');
 console.log(testQueue);
+console.log(testQueue.length);
 testQueue.enqueue('C');
 console.log(testQueue);
+console.log(testQueue.length);
 testQueue.dequeue();
 console.log(testQueue);
 testQueue.dequeue();
