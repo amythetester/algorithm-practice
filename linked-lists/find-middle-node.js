@@ -2,6 +2,7 @@
 
 //Node and LinkedList constructor functions
 const LinkedList = require('./linked-list.js');
+const Node = require('./node.js');
 
 // LinkedList functions
 const addNewNode = require('./add-new-node.js');
@@ -17,6 +18,9 @@ testList.addNewNode(5);
 testList.addNewNode(6);
 testList.addNewNode(7);
 
+// Adding a node to the end of the list that will point to the head and be an infinite loop.
+testList.head.next.next.next.next.next.next = testList.head;
+
 function findMiddle(list) {
 
   if (!list.head) return 'No head';
@@ -30,6 +34,11 @@ function findMiddle(list) {
   while (current.next) {
     current = current.next.next;
     half = half.next;
+    // Validation to end the loop if one of the nodes points to the head.
+    if (current === half) {
+      console.log('List is an infinite loop.');
+      return;
+    }
   }
   console.log(half.value);
   return half;
