@@ -28,8 +28,7 @@ function findMiddle(list) {
   let half = list.head;
 
   while (current.next) {
-    current = current.next;
-    current = current.next;
+    current = current.next.next;
     half = half.next;
   }
   console.log(half.value);
