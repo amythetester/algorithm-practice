@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function() {
-  this.value = null;
+module.exports = function(value) {
+  this.value = value;
   this.next = null;
 };
