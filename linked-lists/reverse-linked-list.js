@@ -16,6 +16,7 @@ testList.addNewNode(3);
 testList.addNewNode(4);
 testList.addNewNode(5);
 
+//iterative version
 function reverseLinkedList(list) {
   if (!list.head) return 'No head.';
 
@@ -33,6 +34,22 @@ function reverseLinkedList(list) {
   return (prev, 'NEW HEAD');
 }
 
+function reverseLinkedListRecursive(list) {
+
+  if (!list.head) return 'No head';
+  if (!list.head.next) return node;
+
+  let current = list.head;
+  let next = current.next;
+  let prev = null;
+
+  reverseLinkedList(current.next, next.next, null)
+
+}
+
 console.log(testList);// 1 > 2 > 3 > 4 > 5
 reverseLinkedList(testList);
+console.log(testList);// 5 > 4 > 3 > 2 > 1
+console.log(testList);// 1 > 2 > 3 > 4 > 5
+reverseLinkedListRecursive(testList);
 console.log(testList);// 5 > 4 > 3 > 2 > 1
