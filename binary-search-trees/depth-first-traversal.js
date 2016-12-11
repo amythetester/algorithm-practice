@@ -36,5 +36,10 @@ module.exports = BST.prototype.depthTraversal = function() {
     if (node.right) _depthFirstTraversal(node.right, 'right: ');
   }
 };
+//running in on the created tree above
+testTree.depthTraversal();
 
+//emptying tree to ensure that if there is only a head a 1 will be returned for depth
+testTree.head = null;
+testTree.addNewNode(50);
 testTree.depthTraversal();
