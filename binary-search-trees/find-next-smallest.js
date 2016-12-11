@@ -18,7 +18,7 @@ testTree.addNewNode(70);
 testTree.addNewNode(19);
 testTree.addNewNode(4);
 
-module.exports = BST.prototype.findNextLargest = function() {
+module.exports = BST.prototype.findNextSmallest = function() {
 
   if (!this.head) return null;
 
@@ -27,19 +27,19 @@ module.exports = BST.prototype.findNextLargest = function() {
     return;
   }
 
-  let node = this.head.right;
+  let node = this.head.left;
 
-  _findNextLargest(node);
+  _findNextSmallest(node);
 
-  function _findNextLargest(node) {
+  function _findNextSmallest(node) {
 
-    if (node.left === null) {
-      console.log('THE NEXT LARGEST IS', node);
+    if (node.right === null) {
+      console.log('THE NEXT SMALLEST IS', node);
       return node;
     }
 
-    if (node.left) _findNextLargest(node.left);
+    if (node.right) _findNextSmallest(node.right);
   }
 };
 
-testTree.findNextLargest();
+testTree.findNextSmallest();
