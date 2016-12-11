@@ -26,7 +26,10 @@ module.exports = BST.prototype.findTreeSize = function() {
   _findTreeSize(this.head, 'head');
 
   function _findTreeSize(node, direction) {
-    console.log(`${direction}: ${node}`);
+    if (node.parent) {
+      var parentValue = node.parent.value;
+    }
+    console.log(`${direction}: ${node.value} parent: ${parentValue}`);
     counter++;
     if (node.left) _findTreeSize(node.left, 'left');
     if (node.right) _findTreeSize(node.right, 'right');
@@ -36,3 +39,4 @@ module.exports = BST.prototype.findTreeSize = function() {
 
 let result = testTree.findTreeSize();
 console.log(result);
+console.log('TESTTREE HEAD LEFT PARENT', testTree.head.left.left.right.right.parent.value);
