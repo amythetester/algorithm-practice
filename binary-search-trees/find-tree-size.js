@@ -39,4 +39,3 @@ module.exports = BST.prototype.findTreeSize = function() {
 
 let result = testTree.findTreeSize();
 console.log(result);
-console.log('TESTTREE HEAD LEFT PARENT', testTree.head.left.left.right.right.parent.value);
