@@ -5,7 +5,7 @@ const Node = require('./node.js');
 
 let testTree = new BST();
 
-BST.prototype.addNewNode = function(value) {
+module.exports = BST.prototype.addNewNode = function(value) {
 
   let tempNode = new Node(value);
 
@@ -33,11 +33,3 @@ BST.prototype.addNewNode = function(value) {
     }
   }
 };
-
-console.log(testTree);
-testTree.addNewNode(50);
-console.log(testTree);
-testTree.addNewNode(25);
-console.log(testTree);
-testTree.addNewNode(75);
-console.log(testTree);
