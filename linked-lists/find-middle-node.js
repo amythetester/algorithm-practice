@@ -2,7 +2,6 @@
 
 //Node and LinkedList constructor functions
 const LinkedList = require('./linked-list.js');
-const Node = require('./node.js');
 
 // LinkedList functions
 const addNewNode = require('./add-new-node.js');
