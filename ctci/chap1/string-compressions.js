@@ -1,39 +1,23 @@
 'use strict';
 
-//incomplete
+function compressStr(inputStr) {
+  let outputArr = [];
+  let temp;
+  let counter = 0;
 
-let input = 'aabcccccaaa';
+  for (let i = 0; i <= inputStr.length; i++) {
 
-function stringCompress(string) {
+    if(!temp) temp = inputStr[i];
 
-  let answer = [];
+    if (temp === inputStr[i]) counter++;
 
-  for (let i = 0; i < string.length; i++) {
-    console.log('HIT');
-
-    let array = string.split('');
-
-    let counter = 0;
-
-    for (let j = i; j < array.length; j++) {
-      if (array[i] === array[j]) {
-        console.log('BANG');
-        counter++;
-        array.pop(j+1);
-      }
-      if (array[i] !== array[j]) break;
-    }
-    if (counter > 1) {
-      answer.push(array[i] += counter);
-    }
     else {
-      answer.push(array[i]);
+      counter === 1 ? outputArr.push(temp) : outputArr.push(temp + counter);
+      counter = 1;
+      temp = inputStr[i];
     }
   }
-  let finalAnswer = answer.toString();
-  return finalAnswer;
+  return outputArr.join('');
 }
 
-let result = stringCompress(input);
-
-console.log(result);
+console.log(compressStr('aaabbccccca'));
