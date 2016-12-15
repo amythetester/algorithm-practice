@@ -14,7 +14,7 @@
 // merge takes left and right arrays.
 // pointers to left and right are compared, push lower to array (prefer left), advance lower pointer until one empties, concat the non-empty.
 
-function mergeSort(arr) {
+let mergeSort = module.exports = function(arr) {
   let mid = Math.floor(arr.length / 2);
   let arrayLeft = arr.slice(0, mid);
   let arrayRight = arr.slice(mid);
@@ -22,7 +22,7 @@ function mergeSort(arr) {
     return merge(mergeSort(arrayLeft), mergeSort(arrayRight));
   }
   return arr;
-}
+};
 
 function merge(leftArray, rightArray) {
 
@@ -52,5 +52,3 @@ function merge(leftArray, rightArray) {
 }
 
 let testArray1 = [1, 12, 4, 33, 2];
-
-console.log(mergeSort(testArray1));
