@@ -23,7 +23,4 @@ function selectionSort(array) {
   return array;
 }
 
-// function findMin() {
-// }
-
 console.log(selectionSort(testArray));

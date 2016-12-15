@@ -2,7 +2,7 @@
 
 let testArray = [5, 7, 1, 2, 8, 4, 3];
 
-// iterative method. O(n2). Not ideal
+// iterative method. O(n^2). Not ideal
 
 let valueSumCheck1 = function(n) {
 

@@ -1,6 +1,6 @@
 'use strict';
 
-function findInters(arr1, arr2) {
+let findInters = module.exports = function(arr1, arr2) {
   let point1 = 0;
   let point2 = 0;
   let answer = [];
@@ -14,7 +14,7 @@ function findInters(arr1, arr2) {
     (arr1[point1] > arr2[point2]) ? point2++ : point1++;
   }
   return answer;
-}
+};
 
 let testArray1 = [0, 4, 8, 11, 13];
 let testArray2 = [1, 3, 8, 13, 14];
