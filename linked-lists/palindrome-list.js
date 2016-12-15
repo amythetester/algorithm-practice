@@ -33,8 +33,9 @@ LinkedList.prototype.isPalindrome() {
   let half = list.head;
   let half2 = list.head;
 
-  while
+  while (current) {
 
+  }
 
 }
 
