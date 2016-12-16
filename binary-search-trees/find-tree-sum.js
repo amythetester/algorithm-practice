@@ -31,27 +31,30 @@ BST.prototype.findTreeSum = function(num) {
   function findSum(node, remainder) {
     console.log(remainder);
     // console.log('NODE LEFT VALUE', node.left.value);
-    // if (node) remainder = remainder - node.value;
+    if (node) remainder = remainder - node.value;
     if (remainder === 0) return true;
+
+    if (node.right && node.left) remainder = remainder - (node.left.value + node.right.value);
+    if (remainder === 0) return true;
+    remainder = (node.left.value + node.right.value);
 
     if (node.left) remainder = remainder - node.left.value;
     console.log(remainder);
     if (remainder === 0) return true;
+    remainder + node.left.value;
 
     if (node.right) remainder = remainder - node.right.value;
     if (remainder === 0) return true;
+    remainder + node.right.value;
 
-    if (node.right && node.left) remainder = remainder - node.left.value;
-    if (remainder === 0) return true;
 
-    else {
-      if (node.left && node.right !== null) findSum(node.left, remainder += node.right.value);
-      if (node.left) findSum(node.left, remainder);
-      if (node.right && node.left !== null) findSum(node.right, remainder += node.left.value);
-      if (node.right) findSum(node.right, remainder);
-    }
+    if (node.left !== null && node.right !== null) findSum(node.left, remainder += node.right.value);
+    if (node.left) findSum(node.left, remainder);
+    if (node.right !== null && node.left !== null) findSum(node.right, remainder += node.left.value);
+    if (node.right) findSum(node.right, remainder);
+
     return false;
   }
 };
 
-console.log(testTree.findTreeSum(85));
+console.log(testTree.findTreeSum(5));

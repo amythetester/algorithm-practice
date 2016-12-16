@@ -63,4 +63,10 @@ function getClosestStars(star) {
   return placeStar(0);
 }
 
-console.log(getClosestStars({distance: 500}));
+getClosestStars({distance: 1}),
+getClosestStars({distance: 1}),
+getClosestStars({distance: 1}),
+getClosestStars({distance: 1}),
+getClosestStars({distance: 1}),
+getClosestStars({distance: 1}),
+console.log(getClosestStars({distance: 7}));
