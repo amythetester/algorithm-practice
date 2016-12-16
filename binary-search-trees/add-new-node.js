@@ -3,8 +3,6 @@
 const BST = require('./tree.js');
 const Node = require('./node.js');
 
-let testTree = new BST();
-
 module.exports = BST.prototype.addNewNode = function(value) {
 
   let tempNode = new Node(value);
@@ -20,7 +18,6 @@ module.exports = BST.prototype.addNewNode = function(value) {
     if (tempNode.value < current.value) {
       if (!current.left) {
         current.left = tempNode;
-        current.left.parent = current;
         return;
       }
       current = current.left;
@@ -28,7 +25,6 @@ module.exports = BST.prototype.addNewNode = function(value) {
     if (tempNode.value > current.value) {
       if (!current.right) {
         current.right = tempNode;
-        current.right.parent = current;
         return;
       }
       current = current.right;
