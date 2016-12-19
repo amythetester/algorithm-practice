@@ -18,23 +18,47 @@ testTree.addNewNode(70);
 testTree.addNewNode(19);
 testTree.addNewNode(4);
 
-module.exports = BST.prototype.breadthTraversal = function() {
+// recursively
+// module.exports = BST.prototype.breadthTraversal = function() {
+//
+//   if(!this.head) return console.log('No head');
+//
+//   let queue = [];
+//
+//   _breadthFirstTraversal(this.head);
+//
+//   function _breadthFirstTraversal(node) {
+//     console.log(node.value);
+//     if (node.left) queue.push(node.left);
+//     if (node.right) queue.push(node.right) ;
+//
+//     if (queue.length) {
+//       _breadthFirstTraversal(queue.shift());
+//     }
+//   }
+// };
 
-  if(!this.head) return console.log('No head');
+// testTree.breadthTraversal();
+
+// iteratively
+
+function breadthTraversalIter(root) {
+  if (!root) return console.log('Not a valid input node.');
 
   let queue = [];
 
-  _breadthFirstTraversal(this.head);
+  queue.push(root);
 
-  function _breadthFirstTraversal(node) {
-    console.log(node.value);
-    if (node.left) queue.push(node.left);
-    if (node.right) queue.push(node.right) ;
-
-    if (queue.length) {
-      _breadthFirstTraversal(queue.shift());
-    }
+  while (queue.length > 0) {
+    let node = queue.shift();
+    queueChildrenAndPrint(node, queue);
   }
-};
+}
 
-testTree.breadthTraversal();
+function queueChildrenAndPrint(node, queue) {
+  if (node.left) queue.push(node.left);
+  if (node.right) queue.push(node.right);
+  console.log(node.value);
+}
+
+breadthTraversalIter(testTree.head);
