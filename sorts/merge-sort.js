@@ -32,19 +32,18 @@ function merge(leftArray, rightArray) {
   let rightValue;
   let mergedArray = [];
 
-
   while (leftPointer < leftArray.length && rightPointer < rightArray.length) {
     leftValue = leftArray[leftPointer];
     rightValue = rightArray[rightPointer];
     if (leftValue <= rightValue) {
       mergedArray.push(leftValue);
       leftPointer++;
-    } else {
+    }
+    else {
       mergedArray.push(rightValue);
       rightPointer++;
     }
   }
-
   if (!leftArray[leftPointer]) mergedArray = mergedArray.concat(rightArray.slice(rightPointer));
   if (!rightArray[rightPointer]) mergedArray = mergedArray.concat(leftArray.slice(leftPointer));
 
@@ -52,3 +51,5 @@ function merge(leftArray, rightArray) {
 }
 
 let testArray1 = [1, 12, 4, 33, 2];
+
+console.log(mergeSort(testArray1));
