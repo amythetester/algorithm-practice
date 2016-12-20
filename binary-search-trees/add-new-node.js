@@ -22,7 +22,7 @@ module.exports = BST.prototype.addNewNode = function(value) {
       }
       current = current.left;
     }
-    if (tempNode.value > current.value) {
+    if (tempNode.value >= current.value) {
       if (!current.right) {
         current.right = tempNode;
         return;
