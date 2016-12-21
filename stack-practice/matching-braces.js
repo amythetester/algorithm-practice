@@ -1,48 +1,30 @@
 'use strict';
 
-// Implement a queue using two stacks
+function validBraces(braceStr) {
 
-let stack = [];
+  let map = {
+    '}': '{',
+    ']': '[',
+    ')': '(',
+  };
+  let stack = [];
 
-Array.prototype.isEmpty = function() {
-  if (this.length === 0) return true;
-  else return false;
-};
-
-Array.prototype.peek = function() {
-  return this[0];
-};
-
-// let parenObj = {
-//   '[': ']',
-//   ']': '[',
-//   '(': ')',
-//   ')': '(',
-//   '{': '}',
-//   '}': '{',
-//   'cat': 'stuff',
-// };
-
-function matchingBraces(string) {
-  let parentheses = '[]{}()';
-  let bracePosition;
-
-  for (let i = 0; string[i]; i++) {
-
-    bracePosition = parentheses.indexOf(string[i]);
-    console.log(bracePosition);
-    console.log(stack);
-
-    if (bracePosition % 2 === 0) {
-      stack.push(bracePosition + 1); // push next expected brace position
+  for (let i = 0; i < braceStr.length; i++) {
+    if (map[braceStr[i]] && stack[stack.length - 1] === map[braceStr[i]]) {
+      stack.pop();
+      continue;
     }
-    else {
-      if (stack.isEmpty() || stack.pop() !== bracePosition) {
-        return false;
-      }
-    }
+    stack.push(braceStr[i]);
   }
-  return stack.isEmpty();
+
+  if (stack.length > 0) return false;
+  return true;
+  // Every time we come across an open brace, we'll want to push it into stack1.
+  // If it's a closing brace, we compare it to the top of the stack and pop it off if it is the same as the prior item in the stack.
 }
 
-console.log(matchingBraces('(){}[]'));
+console.log(validBraces('({[]})')); //true
+console.log(validBraces('(){}')); //true
+console.log(validBraces('({)')); //false
+console.log(validBraces('()[}')); //false
+console.log(validBraces('}(){')); //false
