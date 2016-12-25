@@ -9,34 +9,70 @@ const addNewNode = require('./add-new-node.js');
 
 let testList = new LinkedList;
 
-//preparing the list to be reversed
-testList.addNewNode('R');
+//Odd length list
+// testList.addNewNode('R');
+// testList.addNewNode('A');
+// testList.addNewNode('C');
+// testList.addNewNode('E');
+// testList.addNewNode('C');
+// testList.addNewNode('A');
+// testList.addNewNode('R');
+
+// Even length list
 testList.addNewNode('A');
-testList.addNewNode('C');
-testList.addNewNode('E');
-testList.addNewNode('C');
+testList.addNewNode('B');
+testList.addNewNode('B');
 testList.addNewNode('A');
-testList.addNewNode('R');
 
-// function isPalindrome(node) {
-//
-//   for (let i = 0; i < array.length; i++) {
-//     array[i]
-//   }
-// }
+function isPalindrome(head) {
+  if (!head) throw new Error('No head');
+  if (!head.next) return true; //single node LL is a palindrome.
 
-LinkedList.prototype.isPalindrome() {
-  if (!list.head) return 'No head';
-  if (!list.head.next) return list.head;
+  let mid = findMid(head);
 
-  let current = list.head;
-  let half = list.head;
-  let half2 = list.head;
+  let count = 1;
 
-  while (current) {
+  let pointF = head;
+  let pointR = head;
 
+  let prev = null;
+
+  while (count < mid) {
+    pointF = pointF.next;
+    pointR.next = prev;
+    prev = pointR;
+    pointR = pointF;
+    count++;
+  }
+  if (count % 2 !== 0) {
+    pointF = pointF.next;
+    if (pointF.value !== pointR.value) return false;
+    pointR = prev;
   }
 
+  if (count % 2 === 0) {
+    pointF = pointF.next;
+    pointR.next = prev;
+  }
+
+  while (pointF !== null && pointR !== null) {
+    if (pointF.value !== pointR.value) return false;
+    pointF = pointF.next;
+    pointR = pointR.next;
+  }
+  return true;
 }
 
-isPalindrome(testList.head);
+function findMid (head) {
+
+  let mid = 0;
+  let next = head;
+
+  while (next) {
+    next = next.next;
+    mid++;
+  }
+  return Math.ceil(mid / 2);
+}
+
+console.log(isPalindrome(testList.head));
