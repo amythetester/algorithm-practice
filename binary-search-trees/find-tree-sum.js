@@ -27,7 +27,6 @@ BST.prototype.findTreeSum = function(num) {
   if (!this.head) return null;
   if ( num < this.head.value) return false;
 
-  console.log(num - this.head.value);
   return findSum(this.head, num - this.head.value);
 
   function findSum(node, remainder) {
@@ -56,13 +55,13 @@ BST.prototype.findTreeSum = function(num) {
       remainder += node.right.value;
     }
 
-    if (node.left !== null && node.right !== null) findSum(node.left, remainder += node.right.value);
-    if (node.left) findSum(node.left, remainder);
-    if (node.right !== null && node.left !== null) findSum(node.right, remainder += node.left.value);
-    if (node.right) findSum(node.right, remainder);
+    if (node.left && node.right) findSum(node.left, remainder -= node.right.value);
+    if (node.left && !node.right) findSum(node.left, remainder);
+    if (node.right && node.left) findSum(node.right, remainder -= node.left.value);
+    if (node.right && !node.left) findSum(node.right, remainder);
 
     return false;
   }
 };
 
-console.log(testTree.findTreeSum(125));
+console.log(testTree.findTreeSum(85));
