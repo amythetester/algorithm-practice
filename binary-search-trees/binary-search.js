@@ -26,9 +26,6 @@ function binarySearch(arr, n) {
   function _binarySearch(arrStart, arrEnd) {
     mid = Math.floor((arrStart + arrEnd) / 2);
 
-    console.log(arr[mid]);
-    console.log(n);
-
     if (arr[mid] === n) {
       return mid;
     }
