@@ -2,8 +2,8 @@
 
 // Write an algorithm to determine if a string has a duplicate character in it.
 
-let testInput = 'golden'; // Should return true
-let testInput2 = 'There'; // Should return false
+let testInput = 'golden'; 
+let testInput2 = 'There';
 
 function stringDuplicates(str) {
   if (str.length > 256) return false; // Only 256 ASCII characters
@@ -17,5 +17,5 @@ function stringDuplicates(str) {
   return true;
 }
 
-stringDuplicates(testInput);
-stringDuplicates(testInput2);
+stringDuplicates(testInput); // Should return true
+stringDuplicates(testInput2); // Should return false
