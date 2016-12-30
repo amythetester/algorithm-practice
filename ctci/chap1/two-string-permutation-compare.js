@@ -3,16 +3,15 @@
 let str1 = 'ABBA';
 let str2 = 'BAAB';
 
+// Method below turns them from regular strings and turns them into JS arrays, allowing us to sort them and then compare their indices.
+
 function compareTwoStrings(str1, str2) {
-  let array1 = str1.split('').sort();
-  let array2 = str2.split('').sort();
+  if (str1.length !== str2.length) return false;
 
-  if (array1.length !== array2.length) return false;
+  str1 = str1.split('').sort().join('');
+  str2 = str2.split('').sort().join('');
 
-  for (let i = 0; i < array1.length; i++) {
-    if (!(array1[i] === array2[i])) return false;
-  }
-  return true;
+  return (str1 === str2);
 }
 
 console.log(compareTwoStrings(str1, str2));
