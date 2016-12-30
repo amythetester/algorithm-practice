@@ -2,12 +2,10 @@
 
 function compressStr(inputStr) {
   let outputArr = [];
-  let temp;
+  let temp = inputStr[0];
   let counter = 0;
 
   for (let i = 0; i <= inputStr.length; i++) {
-
-    if(!temp) temp = inputStr[i];
 
     if (temp === inputStr[i]) counter++;
 
