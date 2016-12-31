@@ -21,7 +21,6 @@ testList.addNewNode(7);
 
 function groupOddEven(list) {
 
-  // let oddHead = list.head;
   let evenHead = list.head.next;
   let oddPointer = list.head;
   let evenPointer = list.head.next;

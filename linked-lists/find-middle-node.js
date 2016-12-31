@@ -18,7 +18,6 @@ testList.addNewNode(6);
 testList.addNewNode(7);
 
 // Adding a node to the end of the list that will point to the head and be an infinite loop.
-testList.head.next.next.next.next.next.next = testList.head;
 
 function findMiddle(list) {
 
