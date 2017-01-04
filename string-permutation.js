@@ -5,6 +5,7 @@
 let testInput = 'abc';
 
 function permuteString(str) {
+  str = str.split('');
   let answerArray = [];
   // initial call
   permute('', str);
@@ -19,13 +20,13 @@ function permuteString(str) {
       permute(pre + suf[0], suf.slice(1));
     }
   }
+  function swap(a, b, arr) {
+    let temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+  }
   return answerArray;
 }
 
-function swap(a, b, arr) {
-  let temp = arr[a];
-  arr[a] = arr[b];
-  arr[b] = temp;
-}
 
 console.log(permuteString(testInput));
