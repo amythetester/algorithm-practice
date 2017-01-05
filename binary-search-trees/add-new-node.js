@@ -3,46 +3,31 @@
 const BST = require('./tree.js');
 const Node = require('./node.js');
 
-let testTree = new BST();
-testTree.addNewNode(10);
-testTree.addNewNode(8);
-testTree.addNewNode(11);
-testTree.addNewNode(7);
-testTree.addNewNode(9);
-testTree.addNewNode(4);
-testTree.addNewNode(10);
-testTree.addNewNode(19);
+module.exports = BST.prototype.addNewNode = function(value) {
 
-function findSum(tree, target) {
+  let tempNode = new Node(value);
 
-  let path = [];
+  if (!this.head) {
+    this.head = tempNode;
+    return;
+  }
 
-  function getSum(node, currentSum) {
-    node.aggregatedSum = currentSum + node.value;
-    if (node.aggregatedSum === target) {
-      node.validPath = true;
-      return true;
+  let current = this.head;
+
+  while(current) {
+    if (tempNode.value < current.value) {
+      if (!current.left) {
+        current.left = tempNode;
+        return;
+      }
+      current = current.left;
     }
-    if (!node.validPath && node.left) node.validPath = getSum(node.left, node.aggregatedSum);
-    if (!node.validPath && node.right) node.validPath = getSum(node.right, node.aggregatedSum);
-    return node.validPath;
-  }
-
-  function findPath(node) {
-    while (node && node.validPath) {
-      path.push(node.value);
-      if (node.left && node.left.validPath) node = node.left;
-      else if (node.right && node.right.validPath) node = node.right;
-      else node = null;
+    if (tempNode.value >= current.value) {
+      if (!current.right) {
+        current.right = tempNode;
+        return;
+      }
+      current = current.right;
     }
-    return path;
   }
-
-  if (getSum(tree.root, 0)) {
-    console.log('hit');
-    return findPath(tree.root);
-  }
-  return false;
-}
-
-console.log(findSum(testTree, 18));
+};
