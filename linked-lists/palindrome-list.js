@@ -10,69 +10,49 @@ const addNewNode = require('./add-new-node.js');
 let testList = new LinkedList;
 
 //Odd length list
-// testList.addNewNode('R');
-// testList.addNewNode('A');
-// testList.addNewNode('C');
-// testList.addNewNode('E');
-// testList.addNewNode('C');
-// testList.addNewNode('A');
-// testList.addNewNode('R');
-
-// Even length list
+testList.addNewNode('R');
 testList.addNewNode('A');
-testList.addNewNode('B');
-testList.addNewNode('B');
+testList.addNewNode('C');
+testList.addNewNode('E');
+testList.addNewNode('C');
 testList.addNewNode('A');
+testList.addNewNode('R');
 
-function isPalindrome(head) {
-  if (!head) throw new Error('No head');
-  if (!head.next) return true; //single node LL is a palindrome.
-
-  let mid = findMid(head);
-
-  let count = 1;
-
-  let pointF = head;
-  let pointR = head;
-
+function isPalindrome(list) {
+  let length = 0;
+  let point1 = list.head;
+  while (point1) {
+    point1 = point1.next;
+    length++;
+  }
+  let mid = Math.ceil(length/2);
   let prev = null;
-
-  while (count < mid) {
-    pointF = pointF.next;
-    pointR.next = prev;
-    prev = pointR;
-    pointR = pointF;
-    count++;
+  point1 = list.head;
+  let counter = 1;
+  let temp = null;
+  while (counter < mid) {
+    counter++;
+    temp = point1.next;
+    point1.next = prev;
+    prev = point1;
+    point1 = temp;
   }
-  if (count % 2 !== 0) {
-    pointF = pointF.next;
-    if (pointF.value !== pointR.value) return false;
-    pointR = prev;
+  temp = temp.next;
+  console.log(mid);
+  if (length % 2 === 0) {
+    temp = point1.next;
+    point1.next = prev;
+    prev = point1;
   }
-
-  if (count % 2 === 0) {
-    pointF = pointF.next;
-    pointR.next = prev;
-  }
-
-  while (pointF !== null && pointR !== null) {
-    if (pointF.value !== pointR.value) return false;
-    pointF = pointF.next;
-    pointR = pointR.next;
+  while (temp && prev) {
+    console.log(temp.next);
+    console.log(prev);
+    if (temp.value !== prev.value) return false;
+    temp = temp.next;
+    prev = prev.next;
   }
   return true;
 }
 
-function findMid (head) {
 
-  let mid = 0;
-  let next = head;
-
-  while (next) {
-    next = next.next;
-    mid++;
-  }
-  return Math.ceil(mid / 2);
-}
-
-console.log(isPalindrome(testList.head));
+console.log(isPalindrome(testList));
