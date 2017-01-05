@@ -18,7 +18,6 @@ testTree.addNewNode(70);
 testTree.addNewNode(19);
 testTree.addNewNode(4);
 testTree.addNewNode(30);
-// console.log(testTree);
 
 BST.prototype.deleteNode = function(value) {
   let tP, node;
@@ -27,16 +26,14 @@ BST.prototype.deleteNode = function(value) {
     tP = node;
     (value < node.value) ? node = node.left : node.right;
   }
-  // tL = node.left;
   (tP.value > value) ? tP.left = node.right : tP.right = node.right;
-  // tP.right = node.right;
   let newLeft = node.left;
   node = node.right;
   while (node.left) {
     node = node.left;
   }
   node.left = newLeft;
-  return this;
+  return this.head;
 };
 
-testTree.deleteNode(25);
+console.log(testTree.deleteNode(25));
