@@ -11,8 +11,8 @@ function selectionSort(array) {
 
     min = array[i];
 
-    for (let j = 0; j < array.length; j++) {
-      if (array[j] > min) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < min) {
         temp = array[i];
         min = array[j];
         array[j] = temp;
