@@ -5,8 +5,8 @@
 let testInput = 'abc';
 
 function permuteString(str) {
-  str = str.split('');
   let answerArray = [];
+  str = str.split('');
   // initial call
   permute('', str);
 
