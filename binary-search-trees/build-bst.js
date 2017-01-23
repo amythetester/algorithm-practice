@@ -16,5 +16,4 @@ function buildBST(array)  {
 
   let node = array[Math.floor(array.length/2)]
 
-
 }
