@@ -10,7 +10,7 @@ function maxUniques(str) {
   for(let i = 0; i < newStr.length; i++) {
     map = {};
     if (newStr[i].length <= maxCount) continue;
-    for(let j =0; j < newStr[i].length; j++) {
+    for(let j = 0; j < newStr[i].length; j++) {
       letter = newStr[i][j];
       if (map[letter]) continue;
       else map[letter] = true;
