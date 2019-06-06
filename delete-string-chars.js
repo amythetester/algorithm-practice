@@ -4,7 +4,9 @@ function deleteStrChars(charArr, str) {
 
   let charObj = {};
 
-  for (let i = 0; i < charArr.length; i++) charObj[charArr[i]] = true;
+  for (let i = 0; i < charArr.length; i++) {
+    charObj[charArr[i]] = true;
+  }
 
   let newStr = '';
 
